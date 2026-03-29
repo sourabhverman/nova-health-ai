@@ -65,13 +65,13 @@ const AboutPage = () => (
           </div>
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <p>
-              MedAIPro was founded in 2022 by a team of physicians, AI researchers, and healthcare technologists who shared a common frustration: the tools available to healthcare providers were decades behind what modern technology could offer.
+              Healthora was founded in 2022 by a team of physicians, AI researchers, and healthcare technologists who shared a common frustration: the tools available to healthcare providers were decades behind what modern technology could offer.
             </p>
             <p>
               Starting with a simple AI-powered scheduling assistant, we quickly expanded into a comprehensive platform as providers told us about their biggest pain points — from drowning in paperwork to struggling with billing complexities.
             </p>
             <p>
-              Today, MedAIPro serves thousands of healthcare providers across 30+ countries, processing millions of patient interactions and helping clinicians spend more time on what matters most: their patients.
+              Today, Healthora serves thousands of healthcare providers across 30+ countries, processing millions of patient interactions and helping clinicians spend more time on what matters most: their patients.
             </p>
           </div>
         </motion.div>
