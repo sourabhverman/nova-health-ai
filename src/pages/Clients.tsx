@@ -45,14 +45,14 @@ const ClientsPage = () => (
           <h1 className="font-display text-4xl md:text-6xl font-bold">
             Built for <span className="glow-text">Every Practice</span>
           </h1>
-          <p className="text-lg text-muted-foreground">From solo clinics to hospital networks, MedAIPro adapts to your unique workflow and scales with your growth.</p>
+          <p className="text-lg text-muted-foreground">From solo clinics to hospital networks, Healthora adapts to your unique workflow and scales with your growth.</p>
         </motion.div>
       </div>
     </section>
 
     {/* Problems vs Solutions */}
     <section className="section-padding">
-      <SectionHeading label="Problems We Solve" title="From Challenges to Solutions" description="See how MedAIPro transforms common healthcare pain points into competitive advantages." />
+      <SectionHeading label="Problems We Solve" title="From Challenges to Solutions" description="See how Healthora transforms common healthcare pain points into competitive advantages." />
       <div className="container mx-auto px-4 grid md:grid-cols-2 gap-6">
         {problems.map((p, i) => (
           <motion.div key={i} {...fadeUp} transition={{ delay: i * 0.1 }} className="glass-card-hover p-6 flex gap-6">
@@ -99,7 +99,7 @@ const ClientsPage = () => (
 
     {/* Benefits */}
     <section className="section-padding">
-      <SectionHeading label="Benefits" title="Measurable Impact" description="Real results from real healthcare providers using MedAIPro." />
+      <SectionHeading label="Benefits" title="Measurable Impact" description="Real results from real healthcare providers using Healthora." />
       <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-4">
         {benefits.map((b, i) => (
           <motion.div key={i} {...fadeUp} transition={{ delay: i * 0.1 }} className="glass-card p-6 text-center">
