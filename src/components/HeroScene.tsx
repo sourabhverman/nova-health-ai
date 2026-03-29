@@ -84,7 +84,6 @@ const DNAHelix = () => {
         {connectionGeometries.map((geo, i) => (
           <primitive key={`c-${i}`} object={new THREE.Line(geo, new THREE.LineBasicMaterial({ color: "#34d399", transparent: true, opacity: 0.3 }))} />
         ))}
-        ))}
         {/* Glow tube along each strand */}
         {spheres.filter((_, i) => i % 2 === 0).map((s, i, arr) => {
           if (i === arr.length - 1) return null;
