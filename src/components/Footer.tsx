@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import healthaurasIcon from "@/assets/healthauras-icon.png";
+import healthoraIcon from "@/assets/healthora-icon.png";
 
 const Footer = () => (
   <footer className="border-t border-border/50 bg-card/30">
@@ -7,7 +7,7 @@ const Footer = () => (
       <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
         <div className="space-y-4">
           <Link to="/" className="flex items-center gap-2.5">
-            <img src={healthaurasIcon} alt="HealthAuras" className="w-8 h-8 rounded-lg" />
+            <img src={healthoraIcon} alt="HealthAuras" className="w-8 h-8 rounded-lg" />
             <span className="font-display font-bold text-lg">Health<span className="text-emerald-400">ora</span></span>
           </Link>
           <p className="text-sm text-muted-foreground leading-relaxed">
