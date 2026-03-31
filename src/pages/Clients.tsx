@@ -141,7 +141,7 @@ const ClientsPage = () => (
           <h2 className="font-display text-3xl md:text-5xl font-bold">
             Measurable <span className="glow-text">Impact</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">Real results from real healthcare providers using HealthAura.</p>
+          <p className="text-muted-foreground max-w-2xl mx-auto">Real results from real healthcare providers using Healthora.</p>
         </motion.div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
           {[

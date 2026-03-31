@@ -34,7 +34,7 @@ const Footer = () => (
         ))}
       </div>
       <div className="mt-12 pt-8 border-t border-border/50 text-center text-sm text-muted-foreground">
-        © {new Date().getFullYear()} HealthAura. All rights reserved.
+        © {new Date().getFullYear()} Healthora. All rights reserved.
       </div>
     </div>
   </footer>

@@ -175,7 +175,7 @@ const AboutPage = () => (
             Join the <span className="glow-text">Healthcare Revolution</span>
           </h2>
           <p className="text-muted-foreground max-w-lg mx-auto leading-relaxed">
-            Discover how HealthAura can transform your practice with intelligent, end-to-end solutions.
+            Discover how Healthora can transform your practice with intelligent, end-to-end solutions.
           </p>
           <div className="flex flex-wrap justify-center gap-4 pt-2">
             <Link to="/contact" className="btn-primary-glow inline-flex items-center gap-2">

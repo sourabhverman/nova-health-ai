@@ -62,7 +62,7 @@ const ContactPage = () => {
                 <h3 className="font-display text-2xl font-bold mb-6">Contact Information</h3>
                 <div className="space-y-5">
                   {[
-                    { icon: Mail, label: "Email", value: "hello@healthaura.com" },
+                    { icon: Mail, label: "Email", value: "hello@healthora.com" },
                     { icon: Phone, label: "Phone", value: "+1 (888) 555-0123" },
                     { icon: MapPin, label: "Office", value: "San Francisco, CA" },
                   ].map((c, i) => (
