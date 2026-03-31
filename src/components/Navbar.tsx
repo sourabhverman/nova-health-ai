@@ -22,7 +22,7 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
         <Link to="/" className="flex items-center gap-2.5 group">
           <img src={healthoraIcon} alt="HealthAuras" className="w-8 h-8 rounded-lg" />
-          <span className="font-display font-bold text-lg">Health<span className="text-emerald-400">ora</span></span>
+          <span className="font-display font-bold text-lg">Health<span className="text-emerald-400">Auras</span></span>
         </Link>
 
         {/* Desktop */}

@@ -8,7 +8,7 @@ const Footer = () => (
         <div className="space-y-4">
           <Link to="/" className="flex items-center gap-2.5">
             <img src={healthoraIcon} alt="HealthAuras" className="w-8 h-8 rounded-lg" />
-            <span className="font-display font-bold text-lg">Health<span className="text-emerald-400">ora</span></span>
+            <span className="font-display font-bold text-lg">Health<span className="text-emerald-400">Auras</span></span>
           </Link>
           <p className="text-sm text-muted-foreground leading-relaxed">
             Transforming healthcare with intelligent AI solutions for clinics, hospitals, and medical practices worldwide.
