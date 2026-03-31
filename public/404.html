@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecting…</title>
+    <script>
+      (function () {
+        const path = window.location.pathname + window.location.search + window.location.hash;
+        const segments = window.location.pathname.split("/").filter(Boolean);
+
+        let base = "/";
+        if (window.location.hostname.endsWith("github.io") && segments.length > 0) {
+          base = "/" + segments[0] + "/";
+        }
+
+        const target = base + "?p=" + encodeURIComponent(path);
+        window.location.replace(target);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
