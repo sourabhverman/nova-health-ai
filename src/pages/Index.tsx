@@ -191,7 +191,7 @@ const Index = () => (
       </div>
     </section>
 
-    {/* ─── WHY HEALTHAURA ─── */}
+    {/* ─── WHY HEALTHORA ─── */}
     <section className="relative min-h-[70vh] flex items-center py-24">
       <HeartbeatBg />
       <div className="container mx-auto px-4 relative z-10">
