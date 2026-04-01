@@ -16,12 +16,82 @@ const fadeUp = {
 
 const ContactPage = () => {
   const { toast } = useToast();
-  const [form, setForm] = useState({ name: "", email: "", company: "", message: "", type: "demo" });
+  const [form, setForm] = useState({ name: "", email: "", company: "", product: "", message: "", type: "demo" });
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({ title: "Message sent!", description: "We'll get back to you within 24 hours." });
-    setForm({ name: "", email: "", company: "", message: "", type: "demo" });
+    setLoading(true);
+    
+    try {
+      // NOTE: We are now calling our secure Cloudflare Pages Function endpoint
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          from: "HealthAuras <hello@healthauras.software>",
+          to: [form.email],
+          cc: ["hello@healthauras.software"],
+          subject: `Thank you for contacting HealthAuras - Request Received`,
+          html: `
+            <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #020817; border-radius: 16px; overflow: hidden; border: 1px solid #1e293b; color: #f8fafc;">
+              <div style="background-color: #064e3b; padding: 40px 30px; text-align: center; border-bottom: 2px solid #34d399; position: relative; overflow: hidden;">
+                <h1 style="color: #ffffff; margin: 0; font-size: 32px; letter-spacing: -0.5px; font-weight: 800;">Health<span style="color: #34d399;">Auras</span></h1>
+                <p style="color: #6ee7b7; margin-top: 8px; font-size: 14px; opacity: 0.9;">AI-Powered Healthcare Ecosystem</p>
+              </div>
+              
+              <div style="padding: 40px 30px; background-color: #0f172a;">
+                <h2 style="color: #f8fafc; margin-top: 0; font-size: 24px; font-weight: 600;">Hello ${form.name},</h2>
+                <p style="color: #cbd5e1; font-size: 16px; line-height: 1.7;">Thank you for getting in touch! We have successfully received your <strong><span style="color: #34d399; text-transform: capitalize;">${form.type}</span></strong> inquiry.</p>
+                <p style="color: #cbd5e1; font-size: 16px; line-height: 1.7;">Our dedicated healthcare success team is currently reviewing your details. We guarantee a response within 24 hours.</p>
+                
+                <div style="background-color: #1e293b; padding: 24px; border-radius: 12px; margin: 36px 0; border: 1px solid #334155; border-left: 4px solid #34d399;">
+                  <h3 style="margin-top: 0; color: #f8fafc; font-size: 15px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px;">Summary of Your Request</h3>
+                  <table style="width: 100%; border-collapse: collapse;">
+                    <tr>
+                      <td style="padding: 8px 0; color: #94a3b8; width: 140px; font-size: 15px;">Organization:</td>
+                      <td style="padding: 8px 0; color: #f1f5f9; font-weight: 500; font-size: 15px;">${form.company || 'Not specified'}</td>
+                    </tr>
+                    <tr>
+                      <td style="padding: 8px 0; color: #94a3b8; font-size: 15px;">Interested In:</td>
+                      <td style="padding: 8px 0; color: #f1f5f9; font-weight: 500; font-size: 15px;">${form.product || 'General Platform'}</td>
+                    </tr>
+                    <tr>
+                      <td style="padding: 8px 0; color: #94a3b8; font-size: 15px; vertical-align: top;">Message:</td>
+                      <td style="padding: 8px 0; color: #f1f5f9; font-weight: 400; font-size: 15px; line-height: 1.6;">${form.message}</td>
+                    </tr>
+                  </table>
+                </div>
+                
+                <p style="color: #cbd5e1; font-size: 16px; line-height: 1.7; margin-bottom: 40px;">If you have any immediate questions, please feel free to reply directly to this email.</p>
+                
+                <div style="text-align: center; margin-bottom: 20px;">
+                  <a href="https://healthauras.software" style="background-color: #34d399; color: #020817; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; display: inline-block; transition: all 0.2s;">Explore HealthAuras</a>
+                </div>
+              </div>
+              
+              <div style="background-color: #020817; padding: 24px; text-align: center; border-top: 1px solid #1e293b;">
+                <p style="color: #64748b; font-size: 13px; margin: 0; line-height: 1.5;">© ${new Date().getFullYear()} HealthAuras Software. All rights reserved.<br/>Indore, MP, India</p>
+              </div>
+            </div>
+          `
+        })
+      });
+
+      if (response.ok) {
+        toast({ title: "Message sent!", description:product: "",  "We'll get back to you within 24 hours." });
+        setForm({ name: "", email: "", company: "", message: "", type: "demo" });
+      } else {
+        const errorData = await response.json();
+        toast({ title: "Failed to send", description: errorData.message || "Please try again later.", variant: "destructive" });
+      }
+    } catch (error) {
+      toast({ title: "Network Error", description: "Could not connect to the server. Check your connection or API configuration.", variant: "destructive" });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -121,6 +191,22 @@ const ContactPage = () => {
                     />
                   </div>
                 ))}
+                
+                <div>
+                  <label className="text-xs font-semibold text-muted-foreground mb-1.5 block">Interested In</label>
+                  <select
+                    value={form.product}
+                    onChange={(e) => setForm({ ...form, product: e.target.value })}
+                    className="w-full bg-secondary/50 border border-border rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-400/50 transition-all appearance-none"
+                  >
+                    <option value="" disabled>Select a product...</option>
+                    <option value="AI Receptionist">AI Receptionist</option>
+                    <option value="Clinic Management System">Clinic Management System</option>
+                    <option value="Hospital ERP System">Hospital ERP System</option>
+                    <option value="Custom AI Add-ons">Custom AI Add-ons</option>
+                  </select>
+                </div>
+
                 <div>
                   <label className="text-xs font-semibold text-muted-foreground mb-1.5 block">Message</label>
                   <textarea
@@ -132,8 +218,8 @@ const ContactPage = () => {
                     className="w-full bg-secondary/50 border border-border rounded-lg px-4 py-2.5 text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 transition-all resize-none"
                   />
                 </div>
-                <button type="submit" className="btn-primary-glow w-full inline-flex items-center justify-center gap-2">
-                  <Send className="w-4 h-4" /> Send Message
+                <button type="submit" disabled={loading} className="btn-primary-glow w-full inline-flex items-center justify-center gap-2 disabled:opacity-50">
+                  <Send className="w-4 h-4" /> {loading ? "Sending..." : "Send Message"}
                 </button>
               </form>
             </motion.div>
