@@ -81,8 +81,8 @@ const ContactPage = () => {
       });
 
       if (response.ok) {
-        toast({ title: "Message sent!", description:product: "",  "We'll get back to you within 24 hours." });
-        setForm({ name: "", email: "", company: "", message: "", type: "demo" });
+        toast({ title: "Message sent!", description: "We'll get back to you within 24 hours." });
+        setForm({ name: "", email: "", company: "", product: "", message: "", type: "demo" });
       } else {
         const errorData = await response.json();
         toast({ title: "Failed to send", description: errorData.message || "Please try again later.", variant: "destructive" });
